@@ -25,7 +25,7 @@ fruits_selected = streamlit.multiselect("Pick some fruits:", list(my_fruit_list.
 fruits_to_show = my_fruit_list.loc[fruits_selected]
 # KPI testing
 streamlit.header("test kpi")
-count_selected_fruits = fruits_selected.count()
+count_selected_fruits = len(fruits_selected)
 streamlit.metric("Number of selected fruits", count_selected_fruits)
       
 # display the table on the page
