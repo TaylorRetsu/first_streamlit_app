@@ -34,6 +34,9 @@ def get_fruityvice_data(this_fruit_choice):
       fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())      
       return fruityvice_normalized
   
+count_selected_fruits = fruityvice_normalized[fruit_name].count()
+st.metric("Number of selected fruits in $s" %count_selected_fruits)
+
 # New Section to display fruityvice api response
 streamlit.header('Fruityvice Fruit Advice!')
 
