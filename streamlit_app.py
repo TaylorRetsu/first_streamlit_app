@@ -34,8 +34,6 @@ def get_fruityvice_data(this_fruit_choice):
       fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())      
       return fruityvice_normalized
   
-count_selected_fruits = fruityvice_normalized[fruit_name].count()
-st.metric("Number of selected fruits in $s" %count_selected_fruits)
 
 # New Section to display fruityvice api response
 streamlit.header('Fruityvice Fruit Advice!')
@@ -48,6 +46,8 @@ try:
       back_from_function = get_fruityvice_data(fruit_choice)
       # output it to the screen as a table
       streamlit.dataframe(back_from_function)
+      count_selected_fruits = back_from_function.count()
+      st.metric("Number of selected fruits in $s" %count_selected_fruits)
       
 except URLError as e:
     streamlit.error()
