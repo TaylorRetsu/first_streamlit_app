@@ -23,7 +23,11 @@ my_fruit_list = my_fruit_list.set_index('Fruit')
 # Let's put a pick list here so they can pick the fruit they want to include
 fruits_selected = streamlit.multiselect("Pick some fruits:", list(my_fruit_list.index),['Avocado','Strawberries'])
 fruits_to_show = my_fruit_list.loc[fruits_selected]
-
+# KPI testing
+streamlit.header("test kpi")
+count_selected_fruits = fruits_selected.count()
+streamlit.metric("Number of selected fruits", count_selected_fruits)
+      
 # display the table on the page
 streamlit.dataframe(fruits_to_show)
 
@@ -46,10 +50,6 @@ try:
       back_from_function = get_fruityvice_data(fruit_choice)
       # output it to the screen as a table
       streamlit.dataframe(back_from_function)
-      # KPI testing
-      streamlit.header("test kpi")
-      count_selected_fruits = back_from_function.count()
-      streamlit.metric("Number of selected fruits", count_selected_fruits)
       
 except URLError as e:
     streamlit.error()
