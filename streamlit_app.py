@@ -46,8 +46,10 @@ try:
       back_from_function = get_fruityvice_data(fruit_choice)
       # output it to the screen as a table
       streamlit.dataframe(back_from_function)
+      # KPI testing
+      streamlit.header("test kpi")
       count_selected_fruits = back_from_function.count()
-      streamlit.metric("Number of selected fruits in $s" %count_selected_fruits)
+      streamlit.metric("Number of selected fruits", count_selected_fruits)
       
 except URLError as e:
     streamlit.error()
