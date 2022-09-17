@@ -47,7 +47,7 @@ try:
       # output it to the screen as a table
       streamlit.dataframe(back_from_function)
       count_selected_fruits = back_from_function.count()
-      st.metric("Number of selected fruits in $s" %count_selected_fruits)
+      streamlit.metric("Number of selected fruits in $s" %count_selected_fruits)
       
 except URLError as e:
     streamlit.error()
